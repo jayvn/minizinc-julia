@@ -42,7 +42,7 @@ function solve(data::AbstractString,  numsolutions = 1, verbose = false)
         numsolutions, verbose, std_lib_dir)
     str = utf8(pointer_to_array(ret.content, ret.length))
     ccall((:release_retstring, "libmznmem.so"), Void, (RetString, ), ret)
-    str
+    split(str, '\n')
 end
 
 function __init__()
